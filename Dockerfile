@@ -1,4 +1,4 @@
-FROM dokken/centos-8
+FROM dokken/centos-stream-8
 
 RUN cd /etc/yum.repos.d/
 RUN sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
