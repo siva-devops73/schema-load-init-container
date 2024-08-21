@@ -6,6 +6,6 @@ RUN          yum -y install java
 CMD          /bin/bash
 RUN          yum install epel-release -y
 COPY         mongo.repo /etc/yum.repos.d/mongo.repo
-RUN          yum install mqsql mongodb-org-shell -y
+RUN          yum install mysql mongodb-org-shell -y
 COPY         run.sh /run.sh
 ENTRYPOINT  [ "bash", "/run.sh" ]
