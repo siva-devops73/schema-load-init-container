@@ -1,10 +1,16 @@
 #!/bin/bash
+
+set -x # Debug mode
+
 ## The below while condition is used for when two init containers will not run parallel so code run smooth.
 while true ; do
   if [ -f /data/params ]; then
+    echo "### Parameters"
+    cat /data/params
     source /data/params
     break
   else
+    echo $(date) - waiting for parameters
     sleep 5
   fi
 done
