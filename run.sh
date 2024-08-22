@@ -1,13 +1,19 @@
 #!/bin/bash
+## The below while condition is used for when two init containers will not run parallel so code run smooth.
+while true ; do
+  if [ -f /data/params ]; then
+    source /data/params
+    break
+  else
+    sleep 5
+  fi
+done
 
 mkdir /app
 cd    /app
 git clone https://github.com/siva-devops73/${COMPONENT}
 cd  ${COMPONENT}/schema
 
-do,
-while
-source /data/params
 
 if [ "${SCEHMA_TYPE}" == "mongo" ]; then
   curl -s -L https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -o /app/rds-combined-ca-bundle.pem
