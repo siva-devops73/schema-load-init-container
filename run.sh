@@ -1,8 +1,7 @@
 #!/bin/bash
-
-set -x # Debug mode
-
-## The below while condition is used for when two init containers will not run parallel so code run smooth.
+## set x is used for debug mode
+set -x
+## while condition is used not run two init containers parallel
 while true ; do
   if [ -f /data/params ]; then
     echo "### Parameters"
@@ -10,16 +9,15 @@ while true ; do
     source /data/params
     break
   else
-    echo $(date) - waiting for parameters
+    echo $(date) - Waiting for Parameters
     sleep 5
   fi
 done
 
 mkdir /app
-cd    /app
-git clone https://github.com/siva-devops73/${COMPONENT}
-cd  ${COMPONENT}/schema
-
+cd /app
+git clone https://github.com/siva-devopsb73/${COMPONENT}
+cd ${COMPONENT}/schema
 
 if [ "${SCHEMA_TYPE}" == "mongo" ]; then
   curl -s -L https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem -o /app/rds-combined-ca-bundle.pem
@@ -31,5 +29,5 @@ elif [ "${SCHEMA_TYPE}" == "mysql" ]; then
   fi
 else
   echo Invalid Schema Input
-  exist 1
+  exit 1
 fi
