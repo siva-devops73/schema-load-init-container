@@ -16,7 +16,7 @@ done
 
 mkdir /app
 cd /app
-git clone https://github.com/siva-devopsb73/${COMPONENT}
+git clone https://github.com/siva-devops73/${COMPONENT}
 cd ${COMPONENT}/schema
 
 if [ "${SCHEMA_TYPE}" == "mongo" ]; then
